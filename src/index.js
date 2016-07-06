@@ -542,10 +542,11 @@ module.exports = React.createClass({
       return (
          <ViewPagerAndroid ref="scrollView"
           {...this.props}
-            initialPage={this.props.loop ? this.state.index + 1 : this.state.index}
-            onPageSelected={this.onScrollEnd}
-            style={{flex: 1}}>
-            {pages}
+          key={pages.length}
+          initialPage={this.props.loop ? this.state.index + 1 : this.state.index}
+          onPageSelected={this.onScrollEnd}
+          style={{flex: 1}}>
+          {pages}
          </ViewPagerAndroid>
       );
   },

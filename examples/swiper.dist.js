@@ -566,6 +566,7 @@ module.exports = _react2.default.createClass({
       _reactNative.ViewPagerAndroid,
       _extends({ ref: 'scrollView'
       }, this.props, {
+        key: pages.length,
         initialPage: this.props.loop ? this.state.index + 1 : this.state.index,
         onPageSelected: this.onScrollEnd,
         style: { flex: 1 } }),
