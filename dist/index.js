@@ -1,6 +1,5 @@
 'use strict';
 
-
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; /**
                                                                                                                                                                                                                                                                    * react-native-swiper
                                                                                                                                                                                                                                                                    * @author leecade<leecade@163.com>
@@ -550,6 +549,7 @@ module.exports = _react2.default.createClass({
       _reactNative.ViewPagerAndroid,
       _extends({ ref: 'scrollView'
       }, this.props, {
+        key: pages.length,
         initialPage: this.props.loop ? this.state.index + 1 : this.state.index,
         onPageSelected: this.onScrollEnd,
         style: { flex: 1 } }),
