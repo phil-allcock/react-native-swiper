@@ -547,7 +547,7 @@ module.exports = _react2.default.createClass({
         if (_this8.props.onControlButtonPressed) {
           _this8.props.onControlButtonPressed(false);
         }
-        _this8.scrollBy.call(_this8, 1);
+        _this8.scrollBy.call(_this8, -1);
       }
     };
 

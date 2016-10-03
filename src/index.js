@@ -522,7 +522,7 @@ module.exports = React.createClass({
 		if (this.props.onControlButtonPressed) {
 		  this.props.onControlButtonPressed(false)
 		}
-		this.scrollBy.call(this, 1);
+		this.scrollBy.call(this, -1);
 	  }
 	}
 
