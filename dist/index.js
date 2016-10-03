@@ -137,7 +137,8 @@ module.exports = _react2.default.createClass({
     autoplayTimeout: _react2.default.PropTypes.number,
     autoplayDirection: _react2.default.PropTypes.bool,
     index: _react2.default.PropTypes.number,
-    renderPagination: _react2.default.PropTypes.func
+    renderPagination: _react2.default.PropTypes.func,
+    onControlButtonPressed: _react2.default.PropTypes.func
   },
 
   mixins: [_reactTimerMixin2.default],
@@ -505,15 +506,22 @@ module.exports = _react2.default.createClass({
       button = this.props.nextButton || _react2.default.createElement(
         _reactNative.Text,
         { style: styles.buttonText },
-        '›'
+        '\u203A'
       );
     }
 
+    var handler = function handler() {
+      if (button != null) {
+        if (_this7.props.onControlButtonPressed) {
+          _this7.props.onControlButtonPressed(true);
+        }
+        _this7.scrollBy.call(_this7, 1);
+      }
+    };
+
     return _react2.default.createElement(
       _reactNative.TouchableOpacity,
-      { onPress: function onPress() {
-          return button !== null && _this7.scrollBy.call(_this7, 1);
-        } },
+      { onPress: handler },
       _react2.default.createElement(
         _reactNative.View,
         null,
@@ -530,15 +538,22 @@ module.exports = _react2.default.createClass({
       button = this.props.prevButton || _react2.default.createElement(
         _reactNative.Text,
         { style: styles.buttonText },
-        '‹'
+        '\u2039'
       );
     }
 
+    var handler = function handler() {
+      if (button != null) {
+        if (_this8.props.onControlButtonPressed) {
+          _this8.props.onControlButtonPressed(false);
+        }
+        _this8.scrollBy.call(_this8, 1);
+      }
+    };
+
     return _react2.default.createElement(
       _reactNative.TouchableOpacity,
-      { onPress: function onPress() {
-          return button !== null && _this8.scrollBy.call(_this8, -1);
-        } },
+      { onPress: handler },
       _react2.default.createElement(
         _reactNative.View,
         null,

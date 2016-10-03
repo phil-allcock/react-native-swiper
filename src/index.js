@@ -127,6 +127,7 @@ module.exports = React.createClass({
     autoplayDirection                : React.PropTypes.bool,
     index                            : React.PropTypes.number,
     renderPagination                 : React.PropTypes.func,
+	onControlButtonPressed			 : React.PropTypes.func,
   },
 
   mixins: [TimerMixin],
@@ -490,9 +491,18 @@ module.exports = React.createClass({
     if (this.props.loop || this.state.index != this.state.total - 1) {
       button = this.props.nextButton || <Text style={styles.buttonText}>›</Text>
     }
+	
+	const handler = () => {
+	  if (button != null) {
+		if (this.props.onControlButtonPressed) {
+		  this.props.onControlButtonPressed(true)
+		}
+		this.scrollBy.call(this, 1);
+	  }
+	}
 
     return (
-      <TouchableOpacity onPress={() => button !== null && this.scrollBy.call(this, 1)}>
+      <TouchableOpacity onPress={handler}>
         <View>
           {button}
         </View>
@@ -506,9 +516,18 @@ module.exports = React.createClass({
     if (this.props.loop || this.state.index != 0) {
        button = this.props.prevButton || <Text style={styles.buttonText}>‹</Text>
     }
+	
+	const handler = () => {
+	  if (button != null) {
+		if (this.props.onControlButtonPressed) {
+		  this.props.onControlButtonPressed(false)
+		}
+		this.scrollBy.call(this, 1);
+	  }
+	}
 
     return (
-      <TouchableOpacity onPress={() => button !== null && this.scrollBy.call(this, -1)}>
+      <TouchableOpacity onPress={handler}>
         <View>
           {button}
         </View>
